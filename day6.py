@@ -1,15 +1,19 @@
 
 with open("day6.txt") as f:
-    initstate =f.read()
-    initstate = initstate.split(",")
-    initstate = [int(inits) for inits in initstate]
+    initst =f.read()
+    initst = initst.split(",")
+    initst = [int(inits) for inits in initst]
 
-for _ in range(80):
-    for i in range(len(initstate)):
-        if initstate[i] == 0:
-            initstate[i] = 6
-            initstate.append(8)
-        else:
-            initstate[i] -= 1
+def fishcounter(initstate, days):
+    for _ in range(days):
+        for i in range(len(initstate)):
+            if initstate[i] == 0:
+                initstate[i] = 6
+                initstate.append(8)
+            else:
+                initstate[i] -= 1
+    return initstate
 
-print(len(initstate))
+
+
+print(len(fishcounter(initst, 80)))
